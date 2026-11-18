@@ -2,7 +2,7 @@
 
 - **Người thực hiện:** <!-- Điền tên hoặc GitHub username -->
 - **Vai trò:** [ ] Thành viên 1 (TV1 - TOGAF & Governance) | [ ] Thành viên 2 (TV2 - Luồng chính & Mock UI) | [ ] Thành viên 3 (TV3 - Realtime & Mock API)
-- **Mốc Deadline:** [ ] Tuần 1 | [ ] Tuần 2 | [ ] Tuần 3 | [ ] Tuần 4
+- **Hạng mục thực hiện:** [ ] Giai đoạn 1 (Bối cảnh / Nghiệp vụ / NFR) | [ ] Giai đoạn 2 (Kiến trúc ArchiMate & Dữ liệu) | [ ] Giai đoạn 3 (ADR & Quản trị) | [ ] Giai đoạn 4 (Báo cáo, Slide & Prototype)
 - **Nhánh nguồn (Source Branch):** `feature/...` <!-- TUYỆT ĐỐI KHÔNG PUSH TRỰC TIẾP LÊN MAIN -->
 
 ---
@@ -39,6 +39,6 @@ Vui lòng tích chọn xác nhận nội dung của bạn tuân thủ đúng dan
 
 ## 👑 Phê Duyệt Của Nhóm Trưởng (Reviewer Approval)
 *Chỉ nhóm trưởng mới có quyền tích chọn và merge vào `main`:*
-- [ ] Nội dung đạt chất lượng và đúng tiến độ deadline.
+- [ ] Nội dung đạt chất lượng và đáp ứng đầy đủ yêu cầu bài toán.
 - [ ] Đúng quy chuẩn kiến trúc và danh pháp Hợp đồng chung.
 - [ ] **APPROVED & MERGED**

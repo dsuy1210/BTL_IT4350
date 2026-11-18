@@ -1,5 +1,5 @@
 # 🖥️ PROTOTYPE MOCK UI - STUDENT 360 & FAST ALERTING PORTAL
-### Phụ trách: Thành viên 2 (Mốc Deadline Tuần 4)
+### Phụ trách: Thành viên 2 (Hạng mục 4)
 ### Môn học: Kiến trúc Hệ thống Thông tin và Ứng dụng (IT4350)
 
 ---

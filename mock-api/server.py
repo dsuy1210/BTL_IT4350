@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Mock API Server - BTL IT4350: Student 360 & Fast Alerting (Biến thể B)
-Phụ trách: Thành viên 3 (Deadline Tuần 4)
+Phụ trách: Thành viên 3 (Hạng mục 4)
 
 Triển khai bằng Python Standard Library (http.server) để chạy ngay lập tức
 không cần cài đặt bất kỳ thư viện ngoài (pip) nào!

@@ -6,14 +6,14 @@
 
 ---
 
-## 📅 Tiến Độ 4 Mốc Deadline Của TV3
+## 📋 Danh Mục Các Hạng Mục Công Việc Của TV3
 
-| Deadline | Nội dung công việc | File bàn giao |
+| Hạng mục | Nội dung công việc | File bàn giao |
 |:---:|:---|:---|
-| **Tuần 1** | Viết bộ Yêu cầu phi chức năng (NFR) cho Biến thể B: Latency < 30s, Throughput, Idempotency; Sơ đồ BPMN Quy trình 2 (Luồng ngoại lệ: Giảng viên sửa điểm / LMS gửi trùng). | `week1_nfr_bpmn_exception.md`<br>`diagrams/bpmn_exception_flow.png` |
-| **Tuần 2** | Sơ đồ ArchiMate tầng Technology (Hạ tầng triển khai: Kafka/MQ, Stream Processing, PostgreSQL, Redis, API Gateway); Phân tích kỹ thuật đạt Low Latency. | `week2_archimate_tech_infra.md`<br>`diagrams/archimate_technology.png` |
-| **Tuần 3** | Soạn thảo trọn vẹn **ADR 02** (Cơ chế xử lý luật cảnh báo: Polling Cronjob vs In-Memory Stream Rule Engine); Soạn kịch bản kiểm chứng 01 tình huống bất thường (5k điểm / sửa điểm). | `week3_adr_02_rule_engine.md`<br>`test_scenarios/exception_scenarios.json` |
-| **Tuần 4** | Xây dựng Prototype Mock API hoàn chỉnh bằng Python (chạy test không cần cài lib ngoài); Viết kịch bản test curl/python kiểm chứng REQ-02 và REQ-03; Điền 3 slide. | `../../mock-api/`<br>`../slides/SLIDE_OUTLINE.md` |
+| **Hạng mục 1** | Viết bộ Yêu cầu phi chức năng (NFR) cho Biến thể B: Latency < 30s, Throughput, Idempotency; Sơ đồ BPMN Quy trình 2 (Luồng ngoại lệ: Giảng viên sửa điểm / LMS gửi trùng). | `01_nfr_bpmn_exception.md`<br>`diagrams/bpmn_exception_flow.png` |
+| **Hạng mục 2** | Sơ đồ ArchiMate tầng Technology (Hạ tầng triển khai: Kafka/MQ, Stream Processing, PostgreSQL, Redis, API Gateway); Phân tích kỹ thuật đạt Low Latency. | `02_archimate_tech_infra.md`<br>`diagrams/archimate_technology.png` |
+| **Hạng mục 3** | Soạn thảo trọn vẹn **ADR 02** (Cơ chế xử lý luật cảnh báo: Polling Cronjob vs In-Memory Stream Rule Engine); Soạn kịch bản kiểm chứng 01 tình huống bất thường (5k điểm / sửa điểm). | `03_adr_02_rule_engine.md`<br>`test_scenarios/exception_scenarios.json` |
+| **Hạng mục 4** | Xây dựng Prototype Mock API hoàn chỉnh bằng Python (chạy test không cần cài lib ngoài); Viết kịch bản test curl/python kiểm chứng REQ-02 và REQ-03; Điền 3 slide. | `../../mock-api/`<br>`../slides/SLIDE_OUTLINE.md` |
 
 ---
 
@@ -21,9 +21,9 @@
 ```
 docs/03_tv3_realtime_alerting/
 ├── README.md
-├── week1_nfr_bpmn_exception.md
-├── week2_archimate_tech_infra.md
-├── week3_adr_02_rule_engine.md
+├── 01_nfr_bpmn_exception.md
+├── 02_archimate_tech_infra.md
+├── 03_adr_02_rule_engine.md
 ├── test_scenarios/
 │   └── exception_scenarios.json
 └── diagrams/

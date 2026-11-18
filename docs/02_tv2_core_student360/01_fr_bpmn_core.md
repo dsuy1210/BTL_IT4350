@@ -1,4 +1,4 @@
-# 📑 TUẦN 1 - TV2: YÊU CẦU CHỨC NĂNG (FR) & SƠ ĐỒ BPMN LUỒNG CHÍNH
+# 📑 HẠNG MỤC 1 - TV2: YÊU CẦU CHỨC NĂNG (FR) & SƠ ĐỒ BPMN LUỒNG CHÍNH
 
 ## 1. Bộ Yêu Cầu Chức Năng Chi Tiết (Functional Requirements - FR)
 

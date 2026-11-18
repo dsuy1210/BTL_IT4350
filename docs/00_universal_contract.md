@@ -1,6 +1,7 @@
 # 📜 BƯỚC 0: "HỢP ĐỒNG CHUNG" (UNIVERSAL CONTRACT)
 ### Môn học: Kiến trúc Hệ thống Thông tin và Ứng dụng (IT4350)
 ### Chủ đề VIII: Student 360 & Data Hub — Biến thể B: Cảnh báo nhanh
+### Quy mô nhóm: 3 thành viên | Triển khai theo 3 nhánh độc lập song song
 
 > ⚠️ **LƯU Ý CỐT TỬ**: Đây là bộ từ điển danh pháp và thông số chuẩn được chốt cứng cho toàn bộ dự án. Cả 3 thành viên khi vẽ BPMN, vẽ ArchiMate, viết ADR, code Mock UI hay Mock API **BẮT BUỘC** sử dụng chính xác 100% các định danh dưới đây để đảm bảo tính nhất quán và không ai phải chờ ai.
 

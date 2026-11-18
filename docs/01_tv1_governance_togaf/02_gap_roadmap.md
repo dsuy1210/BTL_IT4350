@@ -1,4 +1,4 @@
-# 📑 TUẦN 2 - TV1: PHÂN TÍCH KHOẢNG CÁCH (GAP ANALYSIS) & LỘ TRÌNH CHUYỂN ĐỔI (ROADMAP)
+# 📑 HẠNG MỤC 2 - TV1: PHÂN TÍCH KHOẢNG CÁCH (GAP ANALYSIS) & LỘ TRÌNH CHUYỂN ĐỔI (ROADMAP)
 
 ## 1. Phân Tích Khoảng Cách (Gap Analysis)
 

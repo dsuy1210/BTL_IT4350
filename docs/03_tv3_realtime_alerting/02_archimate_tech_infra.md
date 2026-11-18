@@ -1,4 +1,4 @@
-# 📑 TUẦN 2 - TV3: SƠ ĐỒ ARCHIMATE CÔNG NGHỆ & HẠ TẦNG LOW-LATENCY
+# 📑 HẠNG MỤC 2 - TV3: SƠ ĐỒ ARCHIMATE CÔNG NGHỆ & HẠ TẦNG LOW-LATENCY
 
 ## 1. Sơ Đồ ArchiMate Tầng Công Nghệ (Technology Layer)
 

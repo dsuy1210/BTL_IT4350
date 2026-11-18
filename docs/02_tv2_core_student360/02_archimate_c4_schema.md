@@ -1,4 +1,4 @@
-# 📑 TUẦN 2 - TV2: SƠ ĐỒ ARCHIMATE (BUSINESS & APPLICATION), C4 CONTAINER & CẤU TRÚC DỮ LIỆU STUDENT 360
+# 📑 HẠNG MỤC 2 - TV2: SƠ ĐỒ ARCHIMATE (BUSINESS & APPLICATION), C4 CONTAINER & CẤU TRÚC DỮ LIỆU STUDENT 360
 
 ## 1. Sơ Đồ ArchiMate Tầng Nghiệp Vụ & Ứng Dụng (Business & Application Layer)
 

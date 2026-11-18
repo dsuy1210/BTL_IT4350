@@ -1,10 +1,10 @@
-# 📑 TUẦN 3 - TV3: KIẾN TRÚC QUYẾT ĐỊNH (ADR 02) & KIỂM CHỨNG TÌNH HUỐNG BẤT THƯỜNG
+# 📑 HẠNG MỤC 3 - TV3: KIẾN TRÚC QUYẾT ĐỊNH (ADR 02) & KIỂM CHỨNG TÌNH HUỐNG BẤT THƯỜNG
 ## ADR 02: Cơ Chế Xử Lý Luật Cảnh Báo Nhanh & Thu Hồi Ngoại Lệ
 
 - **Mã định danh:** `ADR-02`
 - **Trạng thái:** `ACCEPTED` (Đã phê duyệt)
 - **Người đề xuất:** Thành viên 3 (Nhánh Biến thể B - Real-time & Hạ tầng)
-- **Ngày quyết định:** Tuần 3
+- **Hạng mục:** Hạng mục 3 (Quyết định động cơ luật cảnh báo)
 - **Yêu cầu liên quan:** `REQ-02` (Fast Alerting SLA < 30s), `REQ-03` (Biến thể B - Luồng ngoại lệ & Chống trùng lặp)
 
 ---

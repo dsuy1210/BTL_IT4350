@@ -1,5 +1,5 @@
 # ⚙️ PROTOTYPE MOCK API - FAST ALERTING & EXCEPTION ENGINE
-### Phụ trách: Thành viên 3 (Mốc Deadline Tuần 4)
+### Phụ trách: Thành viên 3 (Hạng mục 4)
 ### Môn học: Kiến trúc Hệ thống Thông tin và Ứng dụng (IT4350)
 
 ---

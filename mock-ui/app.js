@@ -1,5 +1,5 @@
 /**
- * Student 360 & Fast Alerting Portal - Interactive Prototype (TV2 Deadline 4)
+ * Student 360 & Fast Alerting Portal - Interactive Prototype (TV2 Prototype)
  * Course: IT4350 - Enterprise Architecture
  * Topic VIII: Student 360 & Data Hub (Biến thể B: Cảnh báo nhanh)
  */

@@ -1,4 +1,4 @@
-# 📑 TUẦN 3 - TV1: QUẢN TRỊ RỦI RO & BẢNG TRUY VẾT YÊU CẦU
+# 📑 HẠNG MỤC 3 - TV1: QUẢN TRỊ RỦI RO & BẢNG TRUY VẾT YÊU CẦU
 
 ## 1. Danh Mục Rủi Ro & Đối Sách Giảm Thiểu (Risk Catalog & Mitigation)
 

@@ -1,4 +1,4 @@
-# 📑 TUẦN 1 - TV3: YÊU CẦU PHI CHỨC NĂNG (NFR) & BPMN LUỒNG NGOẠI LỆ
+# 📑 HẠNG MỤC 1 - TV3: YÊU CẦU PHI CHỨC NĂNG (NFR) & BPMN LUỒNG NGOẠI LỆ
 
 ## 1. Bộ Yêu Cầu Phi Chức Năng (Non-Functional Requirements - NFR) Cho Biến Thể B
 

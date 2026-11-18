@@ -1,10 +1,10 @@
-# 📑 TUẦN 3 - TV2: KIẾN TRÚC QUYẾT ĐỊNH (ADR 01)
+# 📑 HẠNG MỤC 3 - TV2: KIẾN TRÚC QUYẾT ĐỊNH (ADR 01)
 ## ADR 01: Kiến Trúc Tích Hợp Đa Nguồn Về Data Hub Cho Student 360 & Cảnh Báo Nhanh
 
 - **Mã định danh:** `ADR-01`
 - **Trạng thái:** `ACCEPTED` (Đã phê duyệt)
 - **Người đề xuất:** Thành viên 2 (Nhánh Luồng Chính & Dữ liệu)
-- **Ngày quyết định:** Tuần 3
+- **Hạng mục:** Hạng mục 3 (Quyết định kiến trúc tích hợp)
 - **Yêu cầu liên quan:** `REQ-01` (Tích hợp đa nguồn Student 360), `REQ-02` (Biến thể B - Cảnh báo nhanh SLA < 30s)
 
 ---

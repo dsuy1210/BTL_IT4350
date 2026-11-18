@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Automated Test Suite for Mock API & Biến thể B (TV3 Deadline 4)
+Automated Test Suite for Mock API & Biến thể B (TV3 Prototype)
 Kiểm chứng tự động 3 kịch bản:
 - Kịch bản 1: REQ-02 Luồng chính: Điểm kém (< 3.0) kích hoạt Fast Alert < 30s
 - Kịch bản 2: REQ-03A Luồng ngoại lệ: Chống trùng lặp sự kiện (Idempotency)

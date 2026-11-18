@@ -1,4 +1,4 @@
-# 📑 TUẦN 1 - TV1: BỐI CẢNH, ĐỘNG LỰC & TẦM NHÌN KIẾN TRÚC (CHƯƠNG 1)
+# 📑 HẠNG MỤC 1 - TV1: BỐI CẢNH, ĐỘNG LỰC & TẦM NHÌN KIẾN TRÚC (CHƯƠNG 1)
 
 ## 1. Bối Cảnh Tổ Chức & Bài Toán (Organizational Context)
 - **Tên tổ chức giả định:** Trường Đại học Công nghệ / Đại học Bách Khoa Quốc gia.

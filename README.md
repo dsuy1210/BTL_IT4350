@@ -4,7 +4,7 @@
 [![PR Validation CI](https://github.com/dsuy1210/BTL_IT4350/actions/workflows/pr-check.yml/badge.svg)](https://github.com/dsuy1210/BTL_IT4350/actions)
 [![Branch Protection: Enforced](https://img.shields.io/badge/Branch%20Protection-Strict%20PR%20Only-red.svg)](CONTRIBUTING.md)
 [![Team Size](https://img.shields.io/badge/Quy%20mô-3%20Thành%20viên-blue.svg)](#-phân-công-trách-nhiệm-3-nhánh-độc-lập)
-[![Duration](https://img.shields.io/badge/Thời%20gian-4%20Tuần%20(4%20Deadlines)-green.svg)](#-lộ-trình-4-mốc-deadline-chi-tiết)
+[![Architecture](https://img.shields.io/badge/Kiến%20trúc-TOGAF%20%7C%20ArchiMate%20%7C%20C4-purple.svg)](#-cấu-trúc-thư-mục-dự-án)
 
 ---
 
@@ -70,28 +70,14 @@
 
 ---
 
-## 📅 LỘ TRÌNH 4 MỐC DEADLINE CHI TIẾT
+## 📋 CÁC GIAI ĐOẠN TRIỂN KHAI DỰ ÁN
 
-```mermaid
-gantt
-    title Lộ Trình 4 Mốc Deadline - BTL IT4350
-    dateFormat  YYYY-MM-DD
-    section TV1: Quản Trị & TOGAF
-    Tuần 1: Bối cảnh, Stakeholder, Motivation, Baseline     :tv1_1, 2026-11-18, 7d
-    Tuần 2: Gap Analysis, Roadmap 3 Phase, Migration        :tv1_2, after tv1_1, 7d
-    Tuần 3: Danh mục 6-8 Rủi ro, Traceability Matrix        :tv1_3, after tv1_2, 7d
-    Tuần 4: Ghép Báo cáo (25-35 trang), Khung Slide (12 trang):tv1_4, after tv1_3, 7d
-    section TV2: Luồng Chính & UI
-    Tuần 1: Yêu cầu chức năng FR, BPMN 1 Luồng chính        :tv2_1, 2026-11-18, 7d
-    Tuần 2: ArchiMate Business/App, Cấu trúc Dữ liệu, C4    :tv2_2, after tv2_1, 7d
-    Tuần 3: Quyết định ADR 01 (Batch ETL vs Hybrid)         :tv2_3, after tv2_2, 7d
-    Tuần 4: Hoàn thiện Prototype Mock UI, 3 Slide           :tv2_4, after tv2_3, 7d
-    section TV3: Real-time & API
-    Tuần 1: Yêu cầu phi chức năng NFR, BPMN 2 Ngoại lệ      :tv3_1, 2026-11-18, 7d
-    Tuần 2: ArchiMate Technology, Cơ chế Low-Latency        :tv3_2, after tv3_1, 7d
-    Tuần 3: Quyết định ADR 02 (Cronjob vs Stream Engine)    :tv3_3, after tv3_2, 7d
-    Tuần 4: Hoàn thiện Prototype Mock API, Test Suite, 3 Slide:tv3_4, after tv3_3, 7d
-```
+| Giai đoạn | 👤 TV1: Quản Trị & TOGAF | 👤 TV2: Luồng Chính & UI | 👤 TV3: Real-time & API |
+|:---:|---|---|---|
+| **Giai đoạn 1** | Bối cảnh tổ chức, Giả định, Stakeholders, ArchiMate Motivation, Baseline Architecture. | Đặc tả Functional Requirements (FR), Vẽ BPMN 1 Luồng chính End-to-End. | Đặc tả Non-Functional Requirements (NFR), Vẽ BPMN 2 Luồng ngoại lệ (sửa điểm/lặp). |
+| **Giai đoạn 2** | Gap Analysis (Baseline vs Target), Roadmap 3 Phase, ArchiMate Migration. | ArchiMate Business & Application Layer, Thiết kế cấu trúc Hồ sơ 360, Sơ đồ C4. | ArchiMate Technology Layer, Kiến trúc Message Broker/Redis/DB, Kỹ thuật Low-Latency. |
+| **Giai đoạn 3** | Danh mục 06-08 Rủi ro & Mitigation, Bảng ma trận truy vết (Traceability Matrix). | Soạn thảo trọn vẹn ADR 01 (Batch ETL vs Hybrid Integration cho Data Hub). | Soạn thảo trọn vẹn ADR 02 (Cronjob Polling vs Stream Rule Engine) & Kịch bản kiểm chứng. |
+| **Giai đoạn 4** | Ghép hoàn chỉnh Báo cáo 5 Chương (25-35 trang), Tạo khung Slide bảo vệ (10-12 trang). | Hoàn thiện Web Prototype Mock UI (Dashboard, Hồ sơ 360, Pop-up Alert), Điền 3 Slide UI. | Hoàn thiện Prototype Mock API (Python Server, Test Suite kiểm chứng ngoại lệ), Điền 3 Slide API. |
 
 ---
 
@@ -100,29 +86,29 @@ gantt
 ```
 BTL_IT4350/
 ├── .github/
-│   ├── ISSUE_TEMPLATE/                 # Template giao task cho TV1, TV2, TV3
+│   ├── ISSUE_TEMPLATE/                 # Template giao việc cho TV1, TV2, TV3
 │   ├── workflows/pr-check.yml          # GitHub Actions CI tự động kiểm tra cú pháp PR
 │   └── pull_request_template.md        # Mẫu PR bắt buộc có checklist Hợp đồng chung
 ├── docs/
 │   ├── 00_universal_contract.md        # Bước 0: Hợp đồng chung (Quy chuẩn danh pháp bất biến)
 │   ├── 01_tv1_governance_togaf/        # Thư mục làm việc của Thành viên 1
 │   │   ├── README.md
-│   │   ├── week1_vision_motivation.md
-│   │   ├── week2_gap_roadmap.md
-│   │   ├── week3_risks_traceability.md
+│   │   ├── 01_vision_motivation.md
+│   │   ├── 02_gap_roadmap.md
+│   │   ├── 03_risks_traceability.md
 │   │   └── diagrams/                   # Sơ đồ Motivation, Migration của TV1
 │   ├── 02_tv2_core_student360/         # Thư mục làm việc của Thành viên 2
 │   │   ├── README.md
-│   │   ├── week1_fr_bpmn_core.md
-│   │   ├── week2_archimate_c4_schema.md
-│   │   ├── week3_adr_01_integration.md
+│   │   ├── 01_fr_bpmn_core.md
+│   │   ├── 02_archimate_c4_schema.md
+│   │   ├── 03_adr_01_integration.md
 │   │   ├── schemas/                    # JSON Schema hồ sơ Student 360
 │   │   └── diagrams/                   # Sơ đồ BPMN 1, ArchiMate App, C4 Container
 │   ├── 03_tv3_realtime_alerting/       # Thư mục làm việc của Thành viên 3
 │   │   ├── README.md
-│   │   ├── week1_nfr_bpmn_exception.md
-│   │   ├── week2_archimate_tech_infra.md
-│   │   ├── week3_adr_02_rule_engine.md
+│   │   ├── 01_nfr_bpmn_exception.md
+│   │   ├── 02_archimate_tech_infra.md
+│   │   ├── 03_adr_02_rule_engine.md
 │   │   ├── test_scenarios/             # Các kịch bản JSON kiểm chứng ngoại lệ
 │   │   └── diagrams/                   # Sơ đồ BPMN 2, ArchiMate Technology
 │   ├── report/
