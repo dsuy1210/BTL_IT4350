@@ -1,0 +1,68 @@
+{
+  "description": "Các kịch bản kiểm chứng Biến thể B - Luồng chính REQ-02 và Luồng ngoại lệ REQ-03",
+  "scenarios": [
+    {
+      "scenario_id": "SCN-01",
+      "name": "Luồng chính REQ-02: Điểm giữa kỳ kém kích hoạt Fast Alert < 30s",
+      "step_1_payload": {
+        "event_id": "EVT-20261118-001",
+        "event_type": "GRADE_SUBMITTED",
+        "student_id": "20210001",
+        "course_id": "IT4350",
+        "exam_type": "MIDTERM",
+        "score": 2.5,
+        "version": 1,
+        "timestamp": "2026-11-18T10:00:00Z"
+      },
+      "expected_outcome": {
+        "status_code": 200,
+        "alert_generated": true,
+        "alert_status": "ACTIVE",
+        "severity": "WARNING",
+        "message": "Phát hiện điểm môn IT4350 < 3.0. Cảnh báo học vụ được sinh thành công!"
+      }
+    },
+    {
+      "scenario_id": "SCN-02",
+      "name": "Luồng ngoại lệ REQ-03A: Chống trùng lặp sự kiện (Idempotency check)",
+      "step_duplicate_payload": {
+        "event_id": "EVT-20261118-001",
+        "event_type": "GRADE_SUBMITTED",
+        "student_id": "20210001",
+        "course_id": "IT4350",
+        "exam_type": "MIDTERM",
+        "score": 2.5,
+        "version": 1,
+        "timestamp": "2026-11-18T10:00:00Z"
+      },
+      "expected_outcome": {
+        "status_code": 200,
+        "is_duplicate": true,
+        "alert_generated": false,
+        "message": "Sự kiện EVT-20261118-001 đã được xử lý trước đó. Bỏ qua bản tin lặp!"
+      }
+    },
+    {
+      "scenario_id": "SCN-03",
+      "name": "Luồng ngoại lệ REQ-03B: Giảng viên sửa điểm -> Tự động thu hồi cảnh báo (Revocation)",
+      "step_update_payload": {
+        "event_id": "EVT-20261118-002",
+        "event_type": "GRADE_UPDATED",
+        "student_id": "20210001",
+        "course_id": "IT4350",
+        "exam_type": "MIDTERM",
+        "score": 8.5,
+        "version": 2,
+        "superseded_event_id": "EVT-20261118-001",
+        "timestamp": "2026-11-18T10:00:45Z"
+      },
+      "expected_outcome": {
+        "status_code": 200,
+        "profile_updated": true,
+        "alert_revoked": true,
+        "alert_status": "REVOKED",
+        "message": "Điểm đã được cập nhật từ 2.5 lên 8.5. Cảnh báo học vụ tương ứng đã được thu hồi tự động!"
+      }
+    }
+  ]
+}

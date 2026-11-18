@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student 360 & Fast Alerting Portal | IT4350</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">🎓</div>
+        <div class="brand-text">
+          <h2>STUDENT 360</h2>
+          <span>Data Hub & Fast Alert (Biến thể B)</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-tab="dashboard">
+          <span class="icon">📊</span>
+          <span>Dashboard Thống Kê</span>
+        </button>
+        <button class="nav-item" data-tab="profile">
+          <span class="icon">👤</span>
+          <span>Hồ Sơ Student 360</span>
+        </button>
+        <button class="nav-item" data-tab="alerts">
+          <span class="icon">🚨</span>
+          <span>Cảnh Báo Nhanh (Fast Alert)</span>
+          <span class="badge" id="alert-counter">2</span>
+        </button>
+      </nav>
+
+      <div class="system-health">
+        <div class="health-header">
+          <span class="pulse-dot"></span>
+          <span>Trạng Thái 5 Core Services</span>
+        </div>
+        <ul class="service-list">
+          <li><span class="status-ok">●</span> Batch Ingestion: <span class="tag">Idle</span></li>
+          <li><span class="status-ok">●</span> Stream Gateway: <span class="tag ok">Active</span></li>
+          <li><span class="status-ok">●</span> Profile Service: <span class="tag ok">Active</span></li>
+          <li><span class="status-ok">●</span> Fast Alert Engine: <span class="tag ok">&lt; 30s SLA</span></li>
+          <li><span class="status-ok">●</span> Academic Portal: <span class="tag ok">Connected</span></li>
+        </ul>
+      </div>
+
+      <div class="user-card">
+        <div class="user-avatar">👨‍🏫</div>
+        <div class="user-info">
+          <strong>ThS. Nguyễn Văn Minh</strong>
+          <small>Cố vấn học tập Viện CNTT</small>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+      <!-- HEADER -->
+      <header class="top-header">
+        <div class="header-title">
+          <h1 id="page-title">Dashboard Giám Sát Học Vụ & Cảnh Báo Sớm</h1>
+          <p id="page-subtitle">Hệ thống tích hợp dữ liệu tập trung Student 360 & Động cơ cảnh báo nhanh thời gian thực</p>
+        </div>
+        <div class="header-actions">
+          <div class="realtime-status">
+            <span class="status-indicator"></span> WebSocket Live Feed
+          </div>
+          <button class="btn btn-primary" id="btn-demo-trigger">
+            ⚡ Giả Lập: Điểm Giữa Kỳ &lt; 3.0 (REQ-02)
+          </button>
+          <button class="btn btn-warning" id="btn-demo-revoke">
+            🔄 Giả Lập: Sửa Điểm 8.5 & Thu Hồi (REQ-03)
+          </button>
+        </div>
+      </header>
+
+      <!-- TAB 1: DASHBOARD -->
+      <section class="tab-pane active" id="tab-dashboard">
+        <!-- KPI METRICS -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon blue">👥</div>
+            <div class="metric-body">
+              <span class="metric-label">Tổng Sinh Viên Quản Lý</span>
+              <h3 class="metric-value">1,420</h3>
+              <small class="metric-sub text-success">↑ 100% từ Tuyển sinh</small>
+            </div>
+          </div>
+
+          <div class="metric-card warning">
+            <div class="metric-icon amber">⚠️</div>
+            <div class="metric-body">
+              <span class="metric-label">Sinh Viên Có Nguy Cơ (Risk)</span>
+              <h3 class="metric-value" id="kpi-risk-count">38</h3>
+              <small class="metric-sub text-warning">Chiếm 2.7% tổng số</small>
+            </div>
+          </div>
+
+          <div class="metric-card danger">
+            <div class="metric-icon red">🚨</div>
+            <div class="metric-body">
+              <span class="metric-label">Cảnh Báo Nhanh Active</span>
+              <h3 class="metric-value" id="kpi-active-alerts">2</h3>
+              <small class="metric-sub text-danger">Cần can thiệp ngay</small>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon green">⚡</div>
+            <div class="metric-body">
+              <span class="metric-label">Độ Trễ Cảnh Báo (SLA &lt; 30s)</span>
+              <h3 class="metric-value text-success" id="kpi-latency">2.3s</h3>
+              <small class="metric-sub text-success">Đạt chuẩn Biến thể B</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 DATA SOURCES CARD -->
+        <div class="integration-banner">
+          <div class="banner-title">
+            <strong>Tích Hợp Đa Nguồn Theo "Hợp Đồng Chung" (Universal Contract)</strong>
+          </div>
+          <div class="sources-list">
+            <div class="source-item">
+              <span class="badge-source">Batch</span>
+              <strong>Admission System</strong>
+              <small>Hồ sơ đầu vào K66, điểm ĐH, trường cấp 3</small>
+            </div>
+            <div class="source-item">
+              <span class="badge-source stream">Stream</span>
+              <strong>Grading System</strong>
+              <small>CDC luồng điểm thi giữa kỳ/cuối kỳ</small>
+            </div>
+            <div class="source-item">
+              <span class="badge-source stream">Stream</span>
+              <strong>LMS System</strong>
+              <small>Sự kiện đăng nhập, nộp bài, điểm danh</small>
+            </div>
+            <div class="source-item">
+              <span class="badge-source">Batch</span>
+              <strong>Career & Alumni</strong>
+              <small>Khảo sát việc làm cựu sinh viên</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- STUDENTS AT RISK TABLE -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Danh Sách Sinh Viên Cần Chú Ý Trong Kỳ (Trích xuất từ Student 360)</h3>
+            <span class="badge badge-warning">Thời gian thực</span>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Mã SV</th>
+                  <th>Họ và Tên</th>
+                  <th>Lớp / Ngành</th>
+                  <th>CPA</th>
+                  <th>Hoạt động LMS</th>
+                  <th>Môn có nguy cơ</th>
+                  <th>Mức Độ Cảnh Báo</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="risk-students-tbody">
+                <!-- JS will render dynamic rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: STUDENT 360 PROFILE -->
+      <section class="tab-pane" id="tab-profile">
+        <div class="profile-layout">
+          <!-- TOP PROFILE CARD -->
+          <div class="card profile-header-card">
+            <div class="student-avatar-large">👨‍🎓</div>
+            <div class="student-main-details">
+              <div class="name-badge-row">
+                <h2 id="profile-name">Nguyễn Văn An</h2>
+                <span class="badge badge-danger" id="profile-risk-tag">NGUY CƠ CAO (CPA &lt; 2.2)</span>
+              </div>
+              <div class="quick-meta">
+                <span><strong>MSSV:</strong> <code id="profile-id">20210001</code></span>
+                <span><strong>Khóa:</strong> K66</span>
+                <span><strong>Ngành:</strong> Công nghệ Thông tin (IT1)</span>
+                <span><strong>Email:</strong> an.nv210001@sis.hust.edu.vn</span>
+                <span><strong>Điện thoại:</strong> 0987.654.321</span>
+              </div>
+            </div>
+            <div class="profile-actions">
+              <button class="btn btn-primary" onclick="alert('Đã gửi email mời sinh viên tới văn phòng cố vấn!')">
+                ✉️ Gửi Email Mời Tư Vấn
+              </button>
+              <button class="btn btn-secondary" onclick="alert('Đã tạo lịch hẹn tư vấn học vụ: Thứ 5 lúc 09:30 AM')">
+                📅 Đặt Lịch Hẹn Tư Vấn
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 SOURCES BREAKDOWN GRID -->
+          <div class="profile-quad-grid">
+            <!-- 1. Admission System Data -->
+            <div class="card source-card">
+              <div class="card-header">
+                <h4>1. Nguồn Tuyển Sinh (Admission Record)</h4>
+                <span class="badge">Đồng bộ Batch</span>
+              </div>
+              <ul class="data-keyvalue">
+                <li><span>Điểm thi Đại học:</span> <strong>28.5 / 30.0 (Khối A00)</strong></li>
+                <li><span>Trường THPT:</span> <strong>THPT Chuyên Hà Nội - Amsterdam</strong></li>
+                <li><span>Xếp loại đầu vào:</span> <span class="tag ok">Top 5% Khóa</span></li>
+                <li><span>Tình trạng nhập học:</span> <strong>Chính quy, đã nộp hồ sơ gốc</strong></li>
+              </ul>
+            </div>
+
+            <!-- 2. Grading System Data -->
+            <div class="card source-card">
+              <div class="card-header">
+                <h4>2. Nguồn Quản Lý Điểm (Grade Event)</h4>
+                <span class="badge stream">Real-time CDC</span>
+              </div>
+              <ul class="data-keyvalue">
+                <li><span>Điểm tích lũy (CPA):</span> <strong class="text-danger" id="profile-cpa">2.15 / 4.0</strong></li>
+                <li><span>GPA kỳ gần nhất:</span> <strong class="text-warning">1.80</strong></li>
+                <li><span>Tín chỉ tích lũy / nợ:</span> <strong>68 / 8 tín chỉ</strong></li>
+                <li><span>Môn IT4350 (Kiến trúc HTTT):</span> <strong class="text-danger" id="profile-it4350-score">Giữa kỳ: 2.5 (Nguy cơ)</strong></li>
+              </ul>
+            </div>
+
+            <!-- 3. LMS System Data -->
+            <div class="card source-card">
+              <div class="card-header">
+                <h4>3. Nguồn LMS Học Tập (LMS Activity Log)</h4>
+                <span class="badge stream">Real-time Stream</span>
+              </div>
+              <ul class="data-keyvalue">
+                <li><span>Lần đăng nhập cuối:</span> <strong class="text-danger">17 ngày trước</strong></li>
+                <li><span>Tỷ lệ nộp bài tập:</span> <strong class="text-warning">45% (Bỏ 2 bài gần nhất)</strong></li>
+                <li><span>Số buổi vắng điểm danh:</span> <strong class="text-danger">4 buổi (&gt; 20% định mức)</strong></li>
+                <li><span>Tương tác diễn đàn môn học:</span> <strong>0 bài viết</strong></li>
+              </ul>
+            </div>
+
+            <!-- 4. Career & Alumni Data -->
+            <div class="card source-card">
+              <div class="card-header">
+                <h4>4. Nguồn Việc Làm (Employment Record)</h4>
+                <span class="badge">Đồng bộ Batch</span>
+              </div>
+              <ul class="data-keyvalue">
+                <li><span>Tình trạng định hướng:</span> <strong>Chưa đi thực tập</strong></li>
+                <li><span>Nguyện vọng doanh nghiệp:</span> <strong>Software Engineering / Cloud</strong></li>
+                <li><span>Đánh giá kỹ năng mềm:</span> <strong>Khá (Cần cải thiện giao tiếp)</strong></li>
+                <li><span>Lịch sử cựu SV cùng chuyên ngành:</span> <span class="tag ok">96% có việc làm trong 6 tháng</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: FAST ALERTING (BIẾN THỂ B) -->
+      <section class="tab-pane" id="tab-alerts">
+        <div class="alerts-layout">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Danh Sách Academic Alert Thời Gian Thực (Fast Alerting Engine)</h3>
+                <small>Giám sát vi phạm SLA độ trễ &lt; 30 giây theo đúng yêu cầu REQ-02 & REQ-03</small>
+              </div>
+              <div class="alert-filter-badges">
+                <span class="badge badge-danger">Active: <span id="active-badge-count">2</span></span>
+                <span class="badge">Revoked: <span id="revoked-badge-count">1</span></span>
+                <span class="badge">Resolved: <span id="resolved-badge-count">5</span></span>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Mã Cảnh Báo</th>
+                    <th>Thời Điểm</th>
+                    <th>Sinh Viên</th>
+                    <th>Mức Độ</th>
+                    <th>Lý Do Kích Hoạt (Trigger Reason)</th>
+                    <th>Độ Trễ Xử Lý</th>
+                    <th>Trạng Thái</th>
+                    <th>Hành Động Cố Vấn</th>
+                  </tr>
+                </thead>
+                <tbody id="alerts-tbody">
+                  <!-- JS dynamically renders alerts -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- REAL-TIME TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

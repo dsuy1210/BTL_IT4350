@@ -1,0 +1,54 @@
+### 1. Kiểm tra trạng thái hệ thống (Health Check)
+GET http://localhost:8000/health
+
+### 2. Xem hồ sơ Student 360 của sinh viên 20210001
+GET http://localhost:8000/api/v1/students/20210001/profile
+
+### 3. KỊCH BẢN 1: Bắn sự kiện điểm giữa kỳ < 3.0 (REQ-02: Fast Alerting)
+POST http://localhost:8000/api/v1/stream/grades
+Content-Type: application/json
+
+{
+  "event_id": "EVT-20261118-001",
+  "event_type": "GRADE_SUBMITTED",
+  "student_id": "20210001",
+  "course_id": "IT4350",
+  "exam_type": "MIDTERM",
+  "score": 2.5,
+  "version": 1,
+  "timestamp": "2026-11-18T10:00:00Z"
+}
+
+### 4. KỊCH BẢN 2: Bắn lại đúng bản tin trên để kiểm tra Chống trùng lặp (REQ-03A: Idempotency)
+POST http://localhost:8000/api/v1/stream/grades
+Content-Type: application/json
+
+{
+  "event_id": "EVT-20261118-001",
+  "event_type": "GRADE_SUBMITTED",
+  "student_id": "20210001",
+  "course_id": "IT4350",
+  "exam_type": "MIDTERM",
+  "score": 2.5,
+  "version": 1,
+  "timestamp": "2026-11-18T10:00:00Z"
+}
+
+### 5. KỊCH BẢN 3: Giảng viên sửa lại điểm thành 8.5 -> Tự động thu hồi cảnh báo (REQ-03B: Revocation)
+POST http://localhost:8000/api/v1/stream/grades
+Content-Type: application/json
+
+{
+  "event_id": "EVT-20261118-002",
+  "event_type": "GRADE_UPDATED",
+  "student_id": "20210001",
+  "course_id": "IT4350",
+  "exam_type": "MIDTERM",
+  "score": 8.5,
+  "version": 2,
+  "superseded_event_id": "EVT-20261118-001",
+  "timestamp": "2026-11-18T10:00:45Z"
+}
+
+### 6. Xem danh sách Academic Alert sau khi đã thu hồi
+GET http://localhost:8000/api/v1/alerts

@@ -1,0 +1,6 @@
+# Mock API được thiết kế chạy trực tiếp với Python 3 Standard Library (không cần cài đặt gì thêm).
+# Các thư viện bên dưới là tùy chọn nâng cao nếu muốn mở rộng dự án:
+requests>=2.31.0
+pytest>=8.0.0
+fastapi>=0.110.0
+uvicorn>=0.28.0

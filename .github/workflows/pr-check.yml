@@ -1,0 +1,51 @@
+name: Pull Request CI Verification
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate-pr:
+    name: Validate PR & Formats
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate JSON files syntax
+        run: |
+          echo "🔍 Checking JSON files syntax..."
+          find . -name "*.json" -not -path "*/.*" -print0 | while IFS= read -r -d '' file; do
+            echo "Validating $file"
+            python -m json.tool "$file" > /dev/null
+          done
+          echo "✅ All JSON files are valid syntax!"
+
+      - name: Validate Python scripts syntax
+        run: |
+          echo "🔍 Checking Python files syntax in mock-api..."
+          if [ -d "mock-api" ]; then
+            python -m py_compile mock-api/*.py
+            echo "✅ Python mock scripts compiled successfully!"
+          fi
+
+      - name: Check Branch Naming Convention
+        run: |
+          HEAD_REF="${{ github.head_ref }}"
+          echo "PR Branch: $HEAD_REF"
+          if [[ "$HEAD_REF" =~ ^(feature|docs|fix|refactor)/(tv[123]|core|all)-.*$ ]]; then
+            echo "✅ Branch naming matches convention: $HEAD_REF"
+          else
+            echo "⚠️ Warning: Recommended branch format is feature/tv1-..., feature/tv2-..., or feature/tv3-..."
+          fi
+
+      - name: Status Summary
+        run: |
+          echo "🎉 Automated check completed. Awaiting Team Lead manual review and approval!"
