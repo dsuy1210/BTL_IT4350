@@ -42,14 +42,14 @@ Mọi branch tạo mới phải tuân thủ định dạng:
 ```
 
 ### Các tiền tố hợp lệ:
-- `feature/tv1-togaf-vision`: Làm phần TV1 Tuần 1
-- `feature/tv1-gap-roadmap`: Làm phần TV1 Tuần 2
-- `feature/tv2-bpmn-core`: Làm phần TV2 Tuần 1
-- `feature/tv2-mock-ui`: Làm phần TV2 Tuần 4
-- `feature/tv3-tech-archimate`: Làm phần TV3 Tuần 2
-- `feature/tv3-mock-api`: Làm phần TV3 Tuần 4
-- `docs/tv1-traceability-matrix`: Sửa/bổ sung tài liệu
-- `fix/tv3-api-idempotency`: Sửa lỗi kỹ thuật
+- `feature/tv1-togaf-vision`: Làm phần Bối cảnh & Motivation của TV1
+- `feature/tv1-gap-roadmap`: Làm phần Gap Analysis & Roadmap của TV1
+- `feature/tv2-bpmn-core`: Làm phần Sơ đồ BPMN luồng chính của TV2
+- `feature/tv2-mock-ui`: Làm phần Web Prototype Mock UI của TV2
+- `feature/tv3-tech-archimate`: Làm phần ArchiMate Technology của TV3
+- `feature/tv3-mock-api`: Làm phần Mock API & Test ngoại lệ của TV3
+- `docs/tv1-traceability-matrix`: Cập nhật tài liệu & ma trận truy vết
+- `fix/tv3-api-idempotency`: Sửa lỗi kỹ thuật / API
 
 ---
 
@@ -64,7 +64,7 @@ git pull origin main
 
 ### Bước 2: Tạo branch riêng cho công việc của mình
 ```bash
-# Ví dụ TV2 làm phần sơ đồ BPMN Tuần 1:
+# Ví dụ TV2 làm phần sơ đồ BPMN:
 git checkout -b feature/tv2-bpmn-core
 ```
 
@@ -93,7 +93,7 @@ git push -u origin feature/tv2-bpmn-core
 3. Base branch chọn: `main`, Compare branch chọn branch của bạn (ví dụ: `feature/tv2-bpmn-core`).
 4. Điền đầy đủ thông tin theo mẫu **Pull Request Template** có sẵn:
    - Tích chọn vai trò TV1 / TV2 / TV3
-   - Tích chọn mốc Tuần 1, 2, 3, hoặc 4
+   - Tích chọn hạng mục thực hiện tương ứng
    - Xác nhận đã tuân thủ 5 Core Services & Danh pháp trong Hợp đồng chung
    - Đính kèm ảnh demo/kết quả (nếu có)
 5. Nhấn **Create Pull Request**.

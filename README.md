@@ -25,7 +25,7 @@
 
 ## 📜 BƯỚC 0: "HỢP ĐỒNG CHUNG" (UNIVERSAL CONTRACT)
 
-Để cả 3 thành viên làm việc song song độc lập **"Không ai phải đợi ai"**, tất cả tài liệu, sơ đồ BPMN, ArchiMate, ADR, Mock UI và Mock API phải dùng chính xác bộ danh pháp đã chốt cứng tại [docs/00_universal_contract.md](docs/00_universal_contract.md):
+Để cả 3 thành viên làm việc song song độc lập **"Không ai phải đợi ai"**, toàn bộ tài liệu, sơ đồ BPMN, ArchiMate, ADR, Mock UI và Mock API dùng chính xác bộ danh pháp đã chốt cứng tại [docs/00_universal_contract.md](docs/00_universal_contract.md):
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
@@ -64,20 +64,8 @@
 | Tiêu chí | 👤 Thành viên 1 (TV1)<br>**Quản trị, TOGAF & Chuyển đổi** | 👤 Thành viên 2 (TV2)<br>**Luồng Chính, Dữ liệu & Mock UI** | 👤 Thành viên 3 (TV3)<br>**Biến thể B, Hạ tầng & Mock API** |
 |---|---|---|---|
 | **Thư mục làm việc** | `docs/01_tv1_governance_togaf/` | `docs/02_tv2_core_student360/`<br>`mock-ui/` | `docs/03_tv3_realtime_alerting/`<br>`mock-api/` |
-| **Phần Báo cáo phụ trách** | **Chương 1** (Bối cảnh, Motivation)<br>**Chương 5** (Gap, Roadmap, Rủi ro, Truy vết) | **Chương 2** (Nghiệp vụ, Ứng dụng & Dữ liệu Student 360 + ADR 01) | **Chương 3** (Công nghệ Real-time)<br>**Chương 4** (Ngoại lệ + ADR 02 + Kiểm chứng) |
-| **Phần Slide phụ trách** | Trang 1-2 & Trang 11-12 | Trang 3-6 (Nghiệp vụ, C4, ADR 01, Demo UI) | Trang 7-10 (Công nghệ, ADR 02, Demo API) |
-| **Prototype bàn giao** | Ghép file Word hoàn chỉnh (25-35 trang) & Khung Slide | Giao diện Web Prototype Dashboard & Student 360 (`mock-ui/`) | Mock API Server & Test Suite kiểm chứng ngoại lệ (`mock-api/`) |
-
----
-
-## 📋 CÁC GIAI ĐOẠN TRIỂN KHAI DỰ ÁN
-
-| Giai đoạn | 👤 TV1: Quản Trị & TOGAF | 👤 TV2: Luồng Chính & UI | 👤 TV3: Real-time & API |
-|:---:|---|---|---|
-| **Giai đoạn 1** | Bối cảnh tổ chức, Giả định, Stakeholders, ArchiMate Motivation, Baseline Architecture. | Đặc tả Functional Requirements (FR), Vẽ BPMN 1 Luồng chính End-to-End. | Đặc tả Non-Functional Requirements (NFR), Vẽ BPMN 2 Luồng ngoại lệ (sửa điểm/lặp). |
-| **Giai đoạn 2** | Gap Analysis (Baseline vs Target), Roadmap 3 Phase, ArchiMate Migration. | ArchiMate Business & Application Layer, Thiết kế cấu trúc Hồ sơ 360, Sơ đồ C4. | ArchiMate Technology Layer, Kiến trúc Message Broker/Redis/DB, Kỹ thuật Low-Latency. |
-| **Giai đoạn 3** | Danh mục 06-08 Rủi ro & Mitigation, Bảng ma trận truy vết (Traceability Matrix). | Soạn thảo trọn vẹn ADR 01 (Batch ETL vs Hybrid Integration cho Data Hub). | Soạn thảo trọn vẹn ADR 02 (Cronjob Polling vs Stream Rule Engine) & Kịch bản kiểm chứng. |
-| **Giai đoạn 4** | Ghép hoàn chỉnh Báo cáo 5 Chương (25-35 trang), Tạo khung Slide bảo vệ (10-12 trang). | Hoàn thiện Web Prototype Mock UI (Dashboard, Hồ sơ 360, Pop-up Alert), Điền 3 Slide UI. | Hoàn thiện Prototype Mock API (Python Server, Test Suite kiểm chứng ngoại lệ), Điền 3 Slide API. |
+| **Phần Báo cáo phụ trách** | **Chương 1** (Bối cảnh, Tầm nhìn, Motivation)<br>**Chương 5** (Gap, Roadmap, Rủi ro, Truy vết) | **Chương 2** (Nghiệp vụ, Ứng dụng & Dữ liệu Student 360 + ADR 01) | **Chương 3** (Công nghệ Real-time)<br>**Chương 4** (Ngoại lệ + ADR 02 + Kiểm chứng) |
+| **Sản phẩm bàn giao** | Ghép hoàn chỉnh Báo cáo 5 Chương (25-35 trang) | Giao diện Web Prototype Dashboard & Student 360 (`mock-ui/`) | Mock API Server & Test Suite kiểm chứng ngoại lệ (`mock-api/`) |
 
 ---
 
@@ -93,28 +81,26 @@ BTL_IT4350/
 │   ├── 00_universal_contract.md        # Bước 0: Hợp đồng chung (Quy chuẩn danh pháp bất biến)
 │   ├── 01_tv1_governance_togaf/        # Thư mục làm việc của Thành viên 1
 │   │   ├── README.md
-│   │   ├── 01_vision_motivation.md
-│   │   ├── 02_gap_roadmap.md
-│   │   ├── 03_risks_traceability.md
-│   │   └── diagrams/                   # Sơ đồ Motivation, Migration của TV1
+│   │   ├── 01_vision_motivation.md     # Bối cảnh, Stakeholders, ArchiMate Motivation, Baseline
+│   │   ├── 02_gap_roadmap.md           # Gap Analysis, Roadmap 3 Phase, ArchiMate Migration
+│   │   ├── 03_risks_traceability.md    # Danh mục 7 Rủi ro & Ma trận truy vết REQ-01..03
+│   │   └── diagrams/                   # Thư mục lưu ảnh/file nguồn sơ đồ của TV1
 │   ├── 02_tv2_core_student360/         # Thư mục làm việc của Thành viên 2
 │   │   ├── README.md
-│   │   ├── 01_fr_bpmn_core.md
-│   │   ├── 02_archimate_c4_schema.md
-│   │   ├── 03_adr_01_integration.md
+│   │   ├── 01_fr_bpmn_core.md          # Yêu cầu chức năng FR, BPMN 1 Luồng chính End-to-End
+│   │   ├── 02_archimate_c4_schema.md   # ArchiMate Business/App, Cấu trúc Dữ liệu, Sơ đồ C4
+│   │   ├── 03_adr_01_integration.md    # Quyết định ADR 01 (Batch ETL vs Hybrid Integration)
 │   │   ├── schemas/                    # JSON Schema hồ sơ Student 360
 │   │   └── diagrams/                   # Sơ đồ BPMN 1, ArchiMate App, C4 Container
 │   ├── 03_tv3_realtime_alerting/       # Thư mục làm việc của Thành viên 3
 │   │   ├── README.md
-│   │   ├── 01_nfr_bpmn_exception.md
-│   │   ├── 02_archimate_tech_infra.md
-│   │   ├── 03_adr_02_rule_engine.md
+│   │   ├── 01_nfr_bpmn_exception.md    # Yêu cầu phi chức năng NFR, BPMN 2 Luồng ngoại lệ
+│   │   ├── 02_archimate_tech_infra.md  # ArchiMate Technology, Kỹ thuật Low-Latency
+│   │   ├── 03_adr_02_rule_engine.md    # Quyết định ADR 02 (Cronjob vs Stream Rule Engine)
 │   │   ├── test_scenarios/             # Các kịch bản JSON kiểm chứng ngoại lệ
 │   │   └── diagrams/                   # Sơ đồ BPMN 2, ArchiMate Technology
-│   ├── report/
-│   │   └── REPORT_OUTLINE.md           # Dàn ý chi tiết ghép Báo cáo 5 Chương (25-35 trang)
-│   └── slides/
-│       └── SLIDE_OUTLINE.md            # Dàn ý khung Slide thuyết trình (10-12 trang)
+│   └── report/
+│       └── REPORT_OUTLINE.md           # Dàn ý chi tiết ghép Báo cáo 5 Chương (25-35 trang)
 ├── mock-ui/                            # Prototype Web Dashboard & Fast Alerting (TV2)
 │   ├── index.html                      # Mở trực tiếp bằng trình duyệt để demo
 │   ├── style.css

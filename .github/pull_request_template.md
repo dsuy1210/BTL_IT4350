@@ -2,7 +2,7 @@
 
 - **Người thực hiện:** <!-- Điền tên hoặc GitHub username -->
 - **Vai trò:** [ ] Thành viên 1 (TV1 - TOGAF & Governance) | [ ] Thành viên 2 (TV2 - Luồng chính & Mock UI) | [ ] Thành viên 3 (TV3 - Realtime & Mock API)
-- **Hạng mục thực hiện:** [ ] Giai đoạn 1 (Bối cảnh / Nghiệp vụ / NFR) | [ ] Giai đoạn 2 (Kiến trúc ArchiMate & Dữ liệu) | [ ] Giai đoạn 3 (ADR & Quản trị) | [ ] Giai đoạn 4 (Báo cáo, Slide & Prototype)
+- **Hạng mục thực hiện:** [ ] Bối cảnh & Yêu cầu | [ ] Kiến trúc ArchiMate & Dữ liệu | [ ] Quyết định ADR & Rủi ro | [ ] Báo cáo & Prototype
 - **Nhánh nguồn (Source Branch):** `feature/...` <!-- TUYỆT ĐỐI KHÔNG PUSH TRỰC TIẾP LÊN MAIN -->
 
 ---

@@ -9,7 +9,7 @@ assignees: []
 - [ ] Hạng mục 1: Yêu cầu phi chức năng (NFR: Latency < 30s, Idempotency), Sơ đồ BPMN 2 (Luồng ngoại lệ)
 - [ ] Hạng mục 2: Sơ đồ ArchiMate Technology (Kafka/MQ, Stream node, DB, Redis, Gateway), Kỹ thuật Low Latency
 - [ ] Hạng mục 3: Soạn thảo trọn vẹn ADR 02 (Polling Cronjob vs In-Memory Stream Rule Engine), Kiểm chứng 1 tình huống bất thường (5k điểm/sửa điểm)
-- [ ] Hạng mục 4: Prototype Mock API / Xử lý ngoại lệ (Postman / Python server test idempotency & thu hồi alert), 3 slide phần Công nghệ/Ngoại lệ
+- [ ] Hạng mục 4: Prototype Mock API / Xử lý ngoại lệ (Postman / Python server test idempotency & thu hồi alert)
 
 ### 📋 Chi tiết công việc
 <!-- Mô tả nội dung cần làm cụ thể -->

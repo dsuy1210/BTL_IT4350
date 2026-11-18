@@ -86,6 +86,6 @@
 | **Prototype Mock API & Script Kiểm chứng Ngoại lệ** | I | I | **A / R** |
 | **Roadmap Chuyển đổi & Quản trị Rủi ro** | **A / R** | I | C |
 | **Ma trận truy vết (Traceability Matrix)** | **A / R** | C | C |
-| **Tổng hợp Báo cáo 5 Chương & Ghép Slide hoàn chỉnh** | **A / R** | C | C |
+| **Tổng hợp & Định dạng Báo cáo 5 Chương Hoàn Chỉnh** | **A / R** | C | C |
 
 *(Chú thích: R = Responsible - Người trực tiếp làm, A = Accountable - Người chịu trách nhiệm chính, C = Consulted - Người tham vấn góp ý, I = Informed - Người nhận thông tin)*

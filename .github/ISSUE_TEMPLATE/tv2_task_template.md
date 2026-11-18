@@ -9,7 +9,7 @@ assignees: []
 - [ ] Hạng mục 1: Yêu cầu chức năng (FR), Sơ đồ BPMN 1 (Luồng chính End-to-End)
 - [ ] Hạng mục 2: Sơ đồ ArchiMate Business & App, Cấu trúc dữ liệu Hồ sơ Student 360, Sơ đồ C4 Container
 - [ ] Hạng mục 3: Soạn thảo trọn vẹn ADR 01 (Tích hợp Data Hub: Batch ETL vs Hybrid CDC/Stream)
-- [ ] Hạng mục 4: Prototype Mock UI (Student 360, Dashboard, Alert Popup), 3 slide phần UI/Dữ liệu
+- [ ] Hạng mục 4: Prototype Mock UI (Student 360, Dashboard, Alert Popup)
 
 ### 📋 Chi tiết công việc
 <!-- Mô tả nội dung cần làm cụ thể -->

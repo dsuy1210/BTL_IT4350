@@ -9,7 +9,7 @@ assignees: []
 - [ ] Hạng mục 1: Bối cảnh, Stakeholders, ArchiMate Motivation, Architecture Vision & Baseline
 - [ ] Hạng mục 2: Gap Analysis, Roadmap chuyển đổi 3 giai đoạn, ArchiMate Implementation & Migration
 - [ ] Hạng mục 3: Danh mục 6-8 rủi ro & Mitigation, Bảng truy vết Traceability Matrix
-- [ ] Hạng mục 4: Ghép Báo cáo hoàn chỉnh (25-35 trang), Khung Slide thuyết trình (10-12 trang)
+- [ ] Hạng mục 4: Ghép Báo cáo hoàn chỉnh (25-35 trang)
 
 ### 📋 Chi tiết công việc
 <!-- Mô tả nội dung cần làm cụ thể -->
