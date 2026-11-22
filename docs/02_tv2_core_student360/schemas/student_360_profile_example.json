@@ -1,0 +1,71 @@
+{
+  "student_id": "20210001",
+  "profile_last_updated": "2026-11-18T10:00:01Z",
+  "personal_info": {
+    "full_name": "Nguyễn Văn An",
+    "date_of_birth": "2003-05-15",
+    "gender": "Male",
+    "email": "an.nv210001@sis.hust.edu.vn",
+    "phone": "0987654321"
+  },
+  "admission_record": {
+    "entry_year": 2021,
+    "cohort": "K66",
+    "major": "Công nghệ thông tin (IT1)",
+    "high_school": "THPT Chuyên Hà Nội - Amsterdam",
+    "admission_block": "A00",
+    "admission_score": 28.5
+  },
+  "academic_progress": {
+    "cpa": 2.15,
+    "gpa_latest": 1.8,
+    "credits_accumulated": 68,
+    "credits_debt": 8,
+    "warning_level": 1,
+    "course_grades": [
+      {
+        "course_id": "IT4350",
+        "course_name": "Kiến trúc HTTT và Ứng dụng",
+        "midterm_score": 2.5,
+        "final_score": null,
+        "status": "Warning",
+        "grade_version": 1,
+        "last_event_id": "GE-IT4350-20210001-MID-v1"
+      }
+    ]
+  },
+  "lms_summary": {
+    "last_login_timestamp": "2026-11-01T08:30:00Z",
+    "days_inactive": 17,
+    "assignment_completion_rate": 45.0,
+    "missed_attendance_count": 4,
+    "last_activity_id": "LMS-88231"
+  },
+  "career_alumni_info": {
+    "alumni_id": null,
+    "company": null,
+    "role": null,
+    "salary_bracket": null,
+    "survey_year": null,
+    "is_graduated": false,
+    "current_status": "Chưa đi thực tập",
+    "target_company": "Software Engineering / Cloud",
+    "skills": [
+      "Python",
+      "SQL"
+    ]
+  },
+  "risk_assessment": {
+    "current_risk_level": "CRITICAL",
+    "active_alerts": [
+      {
+        "alert_id": "ALT-20261118-001",
+        "timestamp": "2026-11-18T10:00:02Z",
+        "severity": "CRITICAL",
+        "trigger_reason": "Điểm giữa kỳ môn IT4350 = 2.5 (< 3.0) và không hoạt động LMS 17 ngày",
+        "latency_seconds": 1.8,
+        "status": "ACTIVE"
+      }
+    ]
+  }
+}
