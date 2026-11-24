@@ -7,8 +7,8 @@
 ## 🌟 Giới Thiệu
 Giao diện Web Prototype mô phỏng kịch bản End-to-End của hệ thống:
 1. **Màn hình Dashboard Thống Kê:** Thống kê tổng quan sinh viên có nguy cơ, trạng thái hoạt động của 5 Core Services, tích hợp 4 nguồn dữ liệu (Admission, Grading, LMS, Career).
-2. **Màn hình Hồ Sơ Student 360 Chi Tiết:** Gom toàn diện thông tin sinh viên từ 4 nguồn về một màn hình duy nhất (Single Pane of Glass).
-3. **Trung Tâm Cảnh Báo Nhanh (Fast Alerting Engine):** Hiển thị danh sách cảnh báo học vụ thời gian thực, đo lường độ trễ SLA < 30 giây (Thực tế đạt ~1.8s - 2.4s).
+2. **Màn hình Hồ Sơ Student 360 Chi Tiết:** Gom toàn diện thông tin sinh viên từ 4 nguồn về một màn hình duy nhất (Single Pane of Glass). Bấm **Xem 360** ở Dashboard để mở đúng hồ sơ của từng sinh viên.
+3. **Trung Tâm Cảnh Báo Nhanh (Fast Alerting Engine):** Hiển thị danh sách cảnh báo học vụ thời gian thực, minh họa độ trễ SLA < 30 giây. *Lưu ý: các con số độ trễ (~1.2s - 2.4s) và dữ liệu sinh viên trong prototype là **giá trị mô phỏng cố định**, không phải số đo thực; số đo thực do Mock API của TV3 kiểm chứng.*
 
 ---
 

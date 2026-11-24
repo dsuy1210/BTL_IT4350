@@ -111,6 +111,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  // Chi tiết hồ sơ Student 360 cho từng sinh viên (dữ liệu mô phỏng, gom từ DO-01..DO-04)
+  const profiles = {
+    '20210001': {
+      name: 'Nguyễn Văn An', risk: 'NGUY CƠ CAO (CPA < 2.2)', riskClass: 'badge badge-danger', cohort: 'K66', major: 'Công nghệ Thông tin (IT1)',
+      email: 'an.nv210001@sis.hust.edu.vn', phone: '0987.654.321',
+      admScore: '28.5 / 30.0 (Khối A00)', school: 'THPT Chuyên Hà Nội - Amsterdam', rank: 'Top 5% Khóa',
+      cpa: '2.15 / 4.0', gpa: '1.80', credits: '68 / 8 tín chỉ',
+      courseLabel: 'Môn IT4350 (Kiến trúc HTTT):', course: 'Giữa kỳ: 2.5 (Nguy cơ)',
+      lastLogin: '17 ngày trước', submitRate: '45% (Bỏ 2 bài gần nhất)', absent: '4 buổi (> 20% định mức)', forum: '0 bài viết',
+      careerStatus: 'Chưa đi thực tập', target: 'Software Engineering / Cloud', soft: 'Khá (Cần cải thiện giao tiếp)', alumniRate: '96% có việc làm trong 6 tháng'
+    },
+    '20210045': {
+      name: 'Trần Thị Bích', risk: 'NGUY CƠ BỎ HỌC (14 ngày không tương tác)', riskClass: 'badge badge-warning', cohort: 'K66', major: 'Khoa học Máy tính (IT2)',
+      email: 'bich.tt210045@sis.hust.edu.vn', phone: '0912.345.678',
+      admScore: '27.0 / 30.0 (Khối A01)', school: 'THPT Phan Đình Phùng, Hà Nội', rank: 'Top 20% Khóa',
+      cpa: '2.28 / 4.0', gpa: '2.05', credits: '72 / 4 tín chỉ',
+      courseLabel: 'Môn IT3040 (Kỹ thuật lập trình):', course: 'Giữa kỳ: 3.0 (Sát ngưỡng)',
+      lastLogin: '14 ngày trước', submitRate: '48% (Bỏ 1 bài gần nhất)', absent: '3 buổi (= 15% định mức)', forum: '1 bài viết',
+      careerStatus: 'Đang tìm nơi thực tập', target: 'Data Engineering', soft: 'Tốt', alumniRate: '94% có việc làm trong 6 tháng'
+    },
+    '20210112': {
+      name: 'Lê Hoàng Cường', risk: 'CẢNH BÁO MÔN HỌC (điểm < 3.0)', riskClass: 'badge badge-warning', cohort: 'K66', major: 'Hệ thống Thông tin (IT-E10)',
+      email: 'cuong.lh210112@sis.hust.edu.vn', phone: '0868.112.233',
+      admScore: '26.25 / 30.0 (Khối A00)', school: 'THPT Chuyên Lam Sơn, Thanh Hóa', rank: 'Top 30% Khóa',
+      cpa: '2.45 / 4.0', gpa: '2.10', credits: '75 / 6 tín chỉ',
+      courseLabel: 'Môn IT4010 (Hệ thống thông tin quản lý):', course: 'Giữa kỳ: 2.0 (Nguy cơ)',
+      lastLogin: '3 ngày trước', submitRate: '70% (Chưa nộp bài tập lớn)', absent: '1 buổi', forum: '4 bài viết',
+      careerStatus: 'Đã thực tập tại FPT Software', target: 'Business Analyst', soft: 'Khá', alumniRate: '92% có việc làm trong 6 tháng'
+    }
+  };
+  let currentProfileId = '20210001';
+
+  function renderProfile(id) {
+    const p = profiles[id];
+    if (!p) return;
+    currentProfileId = id;
+    document.getElementById('profile-name').textContent = p.name;
+    const tag = document.getElementById('profile-risk-tag');
+    tag.textContent = p.risk;
+    tag.className = p.riskClass;
+    document.getElementById('profile-id').textContent = id;
+    document.getElementById('profile-cpa').textContent = p.cpa;
+    document.getElementById('profile-it4350-score').textContent = p.course;
+    document.querySelectorAll('[data-f]').forEach(el => {
+      const k = el.getAttribute('data-f');
+      if (p[k] !== undefined) el.textContent = p[k];
+    });
+  }
+
   // Render Risk Table
   function renderRiskTable() {
     const tbody = document.getElementById('risk-students-tbody');
@@ -140,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Attach event for View 360 buttons
     document.querySelectorAll('.btn-view-profile').forEach(btn => {
       btn.addEventListener('click', () => {
+        renderProfile(btn.getAttribute('data-id'));
         const profileTabBtn = document.querySelector('[data-tab="profile"]');
         if (profileTabBtn) profileTabBtn.click();
       });
@@ -253,10 +303,16 @@ document.addEventListener('DOMContentLoaded', () => {
       targetAlert.reason = 'ĐÃ THU HỒI: Giảng viên đã đính chính sửa điểm từ 2.0 -> 8.5';
       renderAlertsTable();
 
-      // Update Student 360 Profile fields in DOM
-      const profileCpa = document.getElementById('profile-cpa');
-      const profileScore = document.getElementById('profile-it4350-score');
-      const profileTag = document.getElementById('profile-risk-tag');
+      // Cập nhật dữ liệu hồ sơ 360 của SV 20210001 (để lần mở sau vẫn đúng)
+      Object.assign(profiles['20210001'], {
+        cpa: '2.85 / 4.0 (Đã phục hồi)', course: 'Giữa kỳ: 8.5 (Đã đính chính)',
+        risk: 'BÌNH THƯỜNG (AN TOÀN)', riskClass: 'badge badge-success'
+      });
+      if (currentProfileId === '20210001') renderProfile('20210001');
+      const showingAn = currentProfileId === '20210001';
+      const profileCpa = showingAn ? document.getElementById('profile-cpa') : null;
+      const profileScore = showingAn ? document.getElementById('profile-it4350-score') : null;
+      const profileTag = showingAn ? document.getElementById('profile-risk-tag') : null;
 
       if (profileCpa) profileCpa.innerText = '2.85 / 4.0 (Đã phục hồi)';
       if (profileScore) profileScore.innerText = 'Giữa kỳ: 8.5 (Đã đính chính)';

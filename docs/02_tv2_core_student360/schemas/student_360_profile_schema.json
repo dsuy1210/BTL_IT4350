@@ -1,10 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Student360Profile",
-  "description": "Cấu trúc dữ liệu hồ sơ Student 360 tổng hợp từ 4 nguồn",
+  "description": "Cấu trúc dữ liệu hồ sơ Student 360 (DO-05) tổng hợp từ 4 nguồn: DO-01 Admission Record, DO-02 LMS Activity Log, DO-03 Grade Event, DO-04 Employment Record; risk_assessment tóm tắt DO-06 Academic Alert. Khóa hợp nhất: student_id.",
   "type": "object",
   "required": [
     "student_id",
+    "profile_last_updated",
     "personal_info",
     "admission_record",
     "academic_progress",
@@ -14,52 +15,175 @@
   "properties": {
     "student_id": {
       "type": "string",
+      "pattern": "^[0-9]{8}$",
+      "description": "Khóa hợp nhất giữa 4 nguồn",
       "example": "20210001"
     },
     "personal_info": {
       "type": "object",
-      "required": ["full_name", "email", "phone"],
+      "required": [
+        "full_name",
+        "email",
+        "phone"
+      ],
       "properties": {
-        "full_name": { "type": "string", "example": "Nguyễn Văn An" },
-        "date_of_birth": { "type": "string", "format": "date", "example": "2003-05-15" },
-        "gender": { "type": "string", "enum": ["Male", "Female", "Other"] },
-        "email": { "type": "string", "format": "email", "example": "an.nv210001@sis.hust.edu.vn" },
-        "phone": { "type": "string", "example": "0987654321" }
+        "full_name": {
+          "type": "string",
+          "example": "Nguyễn Văn An"
+        },
+        "date_of_birth": {
+          "type": "string",
+          "format": "date",
+          "example": "2003-05-15"
+        },
+        "gender": {
+          "type": "string",
+          "enum": [
+            "Male",
+            "Female",
+            "Other"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "example": "an.nv210001@sis.hust.edu.vn"
+        },
+        "phone": {
+          "type": "string",
+          "example": "0987654321"
+        }
       }
     },
     "admission_record": {
       "type": "object",
-      "description": "Dữ liệu từ Admission System",
-      "required": ["cohort", "major", "admission_score"],
+      "description": "Dữ liệu từ Admission System (DO-01), nạp Batch qua SVC-01",
+      "required": [
+        "entry_year",
+        "major",
+        "admission_score"
+      ],
       "properties": {
-        "cohort": { "type": "string", "example": "K66" },
-        "major": { "type": "string", "example": "Công nghệ thông tin (IT1)" },
-        "high_school": { "type": "string", "example": "THPT Chuyên Hà Nội - Amsterdam" },
-        "admission_block": { "type": "string", "example": "A00" },
-        "admission_score": { "type": "number", "example": 28.5 }
+        "entry_year": {
+          "type": "integer",
+          "description": "Năm nhập học (DO-01.entry_year)",
+          "example": 2021
+        },
+        "cohort": {
+          "type": "string",
+          "description": "Khóa học, dẫn xuất từ entry_year (2021 -> K66)",
+          "example": "K66"
+        },
+        "major": {
+          "type": "string",
+          "example": "Công nghệ thông tin (IT1)"
+        },
+        "high_school": {
+          "type": "string",
+          "example": "THPT Chuyên Hà Nội - Amsterdam"
+        },
+        "admission_block": {
+          "type": "string",
+          "example": "A00"
+        },
+        "admission_score": {
+          "type": "number",
+          "example": 28.5
+        }
       }
     },
     "academic_progress": {
       "type": "object",
-      "description": "Dữ liệu từ Grading System",
-      "required": ["cpa", "gpa_latest", "credits_accumulated", "course_grades"],
+      "description": "Dữ liệu từ Grading System (DO-03), nạp Stream/CDC qua SVC-02",
+      "required": [
+        "cpa",
+        "gpa_latest",
+        "credits_accumulated",
+        "course_grades"
+      ],
       "properties": {
-        "cpa": { "type": "number", "minimum": 0.0, "maximum": 4.0, "example": 2.15 },
-        "gpa_latest": { "type": "number", "minimum": 0.0, "maximum": 4.0, "example": 1.80 },
-        "credits_accumulated": { "type": "integer", "example": 68 },
-        "credits_debt": { "type": "integer", "example": 8 },
-        "warning_level": { "type": "integer", "enum": [0, 1, 2, 3], "example": 1 },
+        "cpa": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 4.0,
+          "example": 2.15
+        },
+        "gpa_latest": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 4.0,
+          "example": 1.8
+        },
+        "credits_accumulated": {
+          "type": "integer",
+          "example": 68
+        },
+        "credits_debt": {
+          "type": "integer",
+          "example": 8
+        },
+        "warning_level": {
+          "type": "integer",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "example": 1
+        },
         "course_grades": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["course_id", "course_name", "midterm_score", "final_score", "status"],
+            "required": [
+              "course_id",
+              "course_name",
+              "midterm_score",
+              "final_score",
+              "status",
+              "grade_version"
+            ],
             "properties": {
-              "course_id": { "type": "string", "example": "IT4350" },
-              "course_name": { "type": "string", "example": "Kiến trúc HTTT và Ứng dụng" },
-              "midterm_score": { "type": "number", "example": 3.0 },
-              "final_score": { "type": ["number", "null"], "example": null },
-              "status": { "type": "string", "enum": ["In_Progress", "Passed", "Failed", "Warning"] }
+              "course_id": {
+                "type": "string",
+                "example": "IT4350"
+              },
+              "course_name": {
+                "type": "string",
+                "example": "Kiến trúc HTTT và Ứng dụng"
+              },
+              "midterm_score": {
+                "type": "number",
+                "example": 3.0
+              },
+              "final_score": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "example": null
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "In_Progress",
+                  "Passed",
+                  "Failed",
+                  "Warning"
+                ]
+              },
+              "grade_version": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "version cao nhất của Grade Event đã áp dụng (DO-03.version) — dùng để đính chính điểm, REQ-03",
+                "example": 1
+              },
+              "last_event_id": {
+                "type": "string",
+                "description": "event_id của Grade Event gần nhất (DO-03.event_id)",
+                "example": "GE-IT4350-20210001-MID-v1"
+              }
             }
           }
         }
@@ -67,47 +191,180 @@
     },
     "lms_summary": {
       "type": "object",
-      "description": "Dữ liệu từ LMS System",
-      "required": ["last_login_timestamp", "days_inactive", "assignment_completion_rate"],
+      "description": "Dữ liệu từ LMS System (DO-02), nạp Stream/Webhook qua SVC-02; các trường là giá trị tổng hợp do SVC-03 tính lại",
+      "required": [
+        "last_login_timestamp",
+        "days_inactive",
+        "assignment_completion_rate"
+      ],
       "properties": {
-        "last_login_timestamp": { "type": "string", "format": "date-time", "example": "2026-11-01T08:30:00Z" },
-        "days_inactive": { "type": "integer", "example": 17 },
-        "assignment_completion_rate": { "type": "number", "minimum": 0, "maximum": 100, "example": 45.0 },
-        "missed_attendance_count": { "type": "integer", "example": 4 }
+        "last_login_timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2026-11-01T08:30:00Z"
+        },
+        "days_inactive": {
+          "type": "integer",
+          "example": 17
+        },
+        "assignment_completion_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "example": 45.0
+        },
+        "missed_attendance_count": {
+          "type": "integer",
+          "example": 4
+        },
+        "last_activity_id": {
+          "type": "string",
+          "description": "activity_id của LMS Activity Log gần nhất (DO-02.activity_id)",
+          "example": "LMS-88231"
+        }
       }
     },
     "career_alumni_info": {
-      "type": ["object", "null"],
-      "description": "Dữ liệu từ Career & Alumni System (dành cho cựu SV / sinh viên năm cuối)",
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Dữ liệu từ Career & Alumni System (DO-04), nạp Batch qua SVC-01; null nếu chưa có dữ liệu",
       "properties": {
-        "is_graduated": { "type": "boolean", "example": false },
-        "current_status": { "type": "string", "example": "Internship" },
-        "target_company": { "type": "string", "example": "Viettel Software" },
+        "alumni_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "DO-04.alumni_id, ánh xạ về student_id khi tốt nghiệp",
+          "example": null
+        },
+        "company": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "DO-04.company",
+          "example": null
+        },
+        "role": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "DO-04.role",
+          "example": null
+        },
+        "salary_bracket": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "DO-04.salary_bracket (chỉ hiển thị cho vai trò được phép, FR-15)",
+          "example": null
+        },
+        "survey_year": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "DO-04.survey_year",
+          "example": null
+        },
+        "is_graduated": {
+          "type": "boolean",
+          "example": false
+        },
+        "current_status": {
+          "type": "string",
+          "example": "Internship"
+        },
+        "target_company": {
+          "type": "string",
+          "example": "Viettel Software"
+        },
         "skills": {
           "type": "array",
-          "items": { "type": "string" }
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
     "risk_assessment": {
       "type": "object",
-      "required": ["current_risk_level", "active_alerts"],
+      "required": [
+        "current_risk_level",
+        "active_alerts"
+      ],
       "properties": {
-        "current_risk_level": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"], "example": "HIGH" },
+        "current_risk_level": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "CRITICAL"
+          ],
+          "example": "HIGH"
+        },
         "active_alerts": {
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
-              "alert_id": { "type": "string", "example": "ALT-20261118-001" },
-              "timestamp": { "type": "string", "format": "date-time" },
-              "severity": { "type": "string", "enum": ["INFO", "WARNING", "CRITICAL"] },
-              "trigger_reason": { "type": "string", "example": "Điểm giữa kỳ môn IT4350 < 3.0 và không online LMS > 14 ngày" },
-              "status": { "type": "string", "enum": ["ACTIVE", "REVOKED", "RESOLVED"] }
-            }
+              "alert_id": {
+                "type": "string",
+                "example": "ALT-20261118-001"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "INFO",
+                  "WARNING",
+                  "CRITICAL"
+                ]
+              },
+              "trigger_reason": {
+                "type": "string",
+                "example": "Điểm giữa kỳ môn IT4350 < 3.0 và không online LMS > 14 ngày"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ACTIVE",
+                  "REVOKED",
+                  "RESOLVED"
+                ]
+              },
+              "latency_seconds": {
+                "type": "number",
+                "minimum": 0,
+                "description": "DO-06.latency_seconds — REQ-02 yêu cầu < 30",
+                "example": 1.8
+              }
+            },
+            "required": [
+              "alert_id",
+              "severity",
+              "trigger_reason",
+              "latency_seconds",
+              "status"
+            ]
           }
         }
-      }
+      },
+      "description": "Do Fast Alerting Engine (SVC-04) ghi lại sau mỗi lần đánh giá luật; tóm tắt các DO-06 Academic Alert"
+    },
+    "profile_last_updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Thời điểm Student 360 Profile Service cập nhật gần nhất",
+      "example": "2026-11-18T10:00:01Z"
     }
   }
 }
